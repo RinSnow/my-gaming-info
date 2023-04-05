@@ -11,8 +11,16 @@ generator client {
     provider = "prisma-client-js"
 }
 
-model Example {
+model leaderboard {
     id        String   @id @default(cuid())
     createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
+    userId    String
+}
+
+model characters {
+    id            String   @id @default(cuid())
+    createdAt     DateTime @default(now())
+    leaderboardId String
+
+    @@index([leaderboardId])
 }
